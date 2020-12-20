@@ -19,8 +19,10 @@ refs.button.addEventListener('click', onLoad);  // кнопка добавить
 
 function onSearch(e) {
     e.preventDefault();
-   
+    
+    clearConteiner()
     foundImage.query = e.currentTarget.elements.query.value;
+  
     foundImage.resetPage()
     foundImage.fetchPixabay().then(renderImages)
 }
@@ -34,7 +36,11 @@ function renderImages(hits) {
     refs.container.insertAdjacentHTML('beforeend', cardTpL(hits))
 }
 
+//очистка контейнера при каждом новом запросе:
 
+function clearConteiner() {
+    refs.container.innerHTML = '';
+}
 
 
 
