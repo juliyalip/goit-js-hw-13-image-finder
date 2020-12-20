@@ -22,15 +22,15 @@ function onSearch(e) {
 
     foundImage.query = e.currentTarget.elements.query.value;
     foundImage.resetPage()
-    foundImage.fetchPixabay().then(insertImages)
+    foundImage.fetchPixabay().then(renderImages)
 }
 
 function onLoad(e) {
     e.preventDefault();
-    foundImage.fetchPixabay().then(insertImages);
+    foundImage.fetchPixabay().then(renderImages);
 }
 
-function insertImages(images) {
+function renderImages(images) {
     refs.container.insertAdjacentHTML('beforeend', cardTPL(images))
 }
 
