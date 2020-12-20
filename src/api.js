@@ -8,11 +8,10 @@ export default class PixabayFetch {
         const key = '19520072-2a079db9835241cceccf8dd5b';
 
          return fetch(`https://pixabay.com/api/?image_type=photo&orientation=horizontal&q=${this.searchQuery}&language=en&page=${this.page}&per_page=12&key=${key}`)
-            .then(r => r.json())
-             .then(data => {
+            .then(response => response.json())
+             .then(({hits}) => {
                  this.incrementPage();
-             console.log(data)
-             return data.hits}); // hits - возвращает сайт
+                         return hits}); // hits - возвращает сайт
           }
     //увеличиваем страницу на 1-цу
     incrementPage() {
