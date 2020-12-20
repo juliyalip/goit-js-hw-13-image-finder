@@ -1,6 +1,7 @@
 import './styles.css';
-import cardTPL from './template/cardImage.hbs';
+import cardTpL from './template/cardImage.hbs';
 import PixabayFetch from './api';
+
 
 
 const foundImage = new PixabayFetch;
@@ -18,8 +19,7 @@ refs.button.addEventListener('click', onLoad);  // кнопка добавить
 
 function onSearch(e) {
     e.preventDefault();
-    console.log('poisk');
-
+   
     foundImage.query = e.currentTarget.elements.query.value;
     foundImage.resetPage()
     foundImage.fetchPixabay().then(renderImages)
@@ -30,7 +30,13 @@ function onLoad(e) {
     foundImage.fetchPixabay().then(renderImages);
 }
 
-function renderImages(images) {
-    refs.container.insertAdjacentHTML('beforeend', cardTPL(images))
+function renderImages(hits) {
+    refs.container.insertAdjacentHTML('beforeend', cardTpL(hits))
 }
+
+
+
+
+
+
 
